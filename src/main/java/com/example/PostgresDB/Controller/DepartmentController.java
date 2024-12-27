@@ -4,6 +4,9 @@ package com.example.PostgresDB.Controller;
 import com.example.PostgresDB.Entity.Department;
 import com.example.PostgresDB.Service.DepartmentService;
 import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,8 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService; // Injects the DepartmentService dependency.
 
+    Logger logger =
+            LoggerFactory.getLogger(DepartmentController.class);
     /**
      * Handles POST requests to save a new department.
      * @param department the department entity to be saved
@@ -34,6 +39,7 @@ public class DepartmentController {
      */
     @GetMapping("/departments")
     public List<Department> fetchDepartmentList() {
+        logger.info("Fetching all departments PPPP");
         return departmentService.fetchDepartmentList();
     }
 
@@ -57,5 +63,10 @@ public class DepartmentController {
     public String deleteDepartmentById(@PathVariable("id") Long departmentId) {
         departmentService.deleteDepartmentById(departmentId);
         return "Deleted Successfully";
+    }
+
+    @GetMapping("/departments/{id}")
+    public Optional<Department> getDepartmentById(@PathVariable("id") Long departmentId) {
+        return departmentService.getDepartmentById(departmentId);
     }
 }

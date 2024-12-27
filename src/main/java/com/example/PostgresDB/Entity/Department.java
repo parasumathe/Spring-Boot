@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 
 public class Department {
     @Id // Specifies the primary key of the entity.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long departmentId; // Unique identifier for the department.
     private String departmentName; // Name of the department.
     private String departmentAddress; // Address of the department.

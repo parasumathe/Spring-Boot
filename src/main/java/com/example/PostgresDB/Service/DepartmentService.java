@@ -1,6 +1,7 @@
 package com.example.PostgresDB.Service;
 import com.example.PostgresDB.Entity.Department;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Service interface for Department entity.
@@ -33,4 +34,10 @@ public interface DepartmentService {
      * @param departmentId the ID of the department to delete
      */
     void deleteDepartmentById(Long departmentId);
+
+    /**
+     * Fetches department entity for the given department Id.
+     * @return department entity
+     */
+    Optional<Department> getDepartmentById(Long departmentId);
 }

@@ -5,6 +5,8 @@ import com.example.PostgresDB.Entity.Department;
 import com.example.PostgresDB.Repository.DepartmentRepository;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,4 +58,9 @@ public class DepartmentServiceImpl implements DepartmentService {
         departmentRepository.deleteById(departmentId);
     }
 
+    @Override
+    public Optional<Department> getDepartmentById(Long departmentId) {
+        // Deletes the department entity by its ID.
+        return departmentRepository.findById(departmentId);
+    }
 }
